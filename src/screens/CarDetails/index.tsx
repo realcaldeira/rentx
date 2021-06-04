@@ -14,7 +14,6 @@ import peopleSvg from '../../assets/people.svg';
 import {
   Container,
   Header,
-  CarImages,
   Content,
   Details,
   Description,
