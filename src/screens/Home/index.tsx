@@ -24,18 +24,9 @@ export function Home(){
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
 
-  const carData = {
-    brand: 'Audi',
-    name: 'RS 5 Coupé',
-    rent:{
-        period: 'AO DIA',
-        price: 120,
-    },
-    thumbnail: 'https://automobile-assets.s3.amazonaws.com/automobile/body/audi-rs5-2020-2022-1613028935.6138937.png'
-  }
 
-  function handleCarDatails(){
-    navigation.navigate('CarDetails');
+  function handleCarDatails(car: CarDTO){
+    navigation.navigate('CarDetails', { car });
   }
 
   useEffect(()=> {
@@ -76,7 +67,7 @@ export function Home(){
         data={cars}
         keyExtractor={item => item.id}
         renderItem={({ item })=> 
-          <Car data={item} onPress={handleCarDatails}/>
+          <Car data={item} onPress={()=> handleCarDatails(item)}/>
         }
       />
     }
