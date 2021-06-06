@@ -21,7 +21,7 @@ import {
 } from './styles';
 
 export function Scheduling(){
-  const [lastSelectedDate, setLastSelectedDate] = useStatee<DayProps>({} as DayProps);
+  const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>({} as DayProps);
   
   const theme = useTheme();
   const navigation = useNavigation();
