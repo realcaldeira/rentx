@@ -2,6 +2,7 @@ import React from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useTheme } from 'styled-components';
 
+import { generateInterval } from './generateInterval'; 
 import { ptBR } from './localeConfig';
 
 import { 
@@ -80,5 +81,6 @@ interface CalendarProps {
 export {
     Calendar,
     MarkedDatesProps,
-    DayProps
+    DayProps,
+    generateInterval
 }
