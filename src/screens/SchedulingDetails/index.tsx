@@ -9,11 +9,13 @@ import { ImageSlider } from '../../components/ImageSlider';
 import { Accessory } from '../../components/Accessory';
 import { Button } from '../../components/Button';
 
-import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 import { RFValue } from 'react-native-responsive-fontsize';
 import { CarDTO } from '../../dtos/CarDTO';
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
+import { getPlatformDate } from '../../utils/getPlatformDate';
+import { api } from '../../services/api';
 import {
   Container,
   Header,
@@ -39,8 +41,6 @@ import {
   RentalPriceQuota,
   RentalPriceTotal
 } from './styles';
-import { getPlatformDate } from '../../utils/getPlatformDate';
-import { api } from '../../services/api';
 
 interface Params {
   car: CarDTO;
@@ -63,19 +63,20 @@ export function SchedulingDetails(){
   const rentTotal = Number(dates.length * car.rent.price);
 
   async function handleConfirmRental(){
-    const schedulesByCar = await api.get(`/schedules/${car.id}`);
-
+    const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
+    
     const unavailable_dates = [
       ...schedulesByCar.data.unavailable_dates,
       ...dates,
     ];
 
-    api.put(`/schedules/${car.id}`, {
+    api.put(`/schedules_bycars/${car.id}`, {
       id: car.id,
-      unavailable_dates
+      unavailable_dates,
+      
     })
     .then(() => navigation.navigate('SchedulingComplete'))
-    .catch(()=> Alert.alert("Não possível confirmar o agendamento."))
+    .catch(()=> Alert.alert('Não foi possível confirmar o agendamento.'))
   }
   function handleBack(){
     navigation.goBack();
