@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { StatusBar, StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet, BackHandler } from 'react-native';
 
 import { RFValue } from 'react-native-responsive-fontsize'
 import { useTheme } from 'styled-components';
@@ -21,7 +21,7 @@ import  { api }  from '../../services/api';
 import { CarDTO } from '../../dtos/CarDTO';
 
 import { Car } from '../../components/Car';
-import { Load } from '../../components/Load';
+import { LoadAnimation } from '../../components/LoadAnimation';
 
 import {
   Container,
@@ -35,7 +35,7 @@ import {
 const ButtonAnimated = Animated.createAnimatedComponent(RectButton);
 
 export function Home(){
-  const [cars, setCars] = useState<CarDTO>([]);
+  const [cars, setCars] = useState<CarDTO[]>([]);
   const [loading, setLoading] = useState(true);
   
   const positionY = useSharedValue(0);
@@ -90,6 +90,11 @@ export function Home(){
     fetchCars();
   },[])
 
+  useEffect(()=> {
+    BackHandler.addEventListener('hardwareBackPress', ()=> {
+      return true;
+    })
+  },[]);
 
   return (
     <Container>
@@ -104,12 +109,15 @@ export function Home(){
             width={RFValue(108)}
             height={RFValue(12)}
           />
+        {
+          !loading &&
           <TotalCars>
-            Total de 12 carros
+            Total de {cars.length} carros
           </TotalCars>
+        }
         </HeaderContent>
       </Header>
-    { loading ? <Load /> : 
+    { loading ? <LoadAnimation /> : 
       <CarList
         data={cars}
         keyExtractor={item => item.id}
