@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { Dimensions } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 interface ImageIndexProps{
     active: boolean;
@@ -7,6 +8,7 @@ interface ImageIndexProps{
 
 export const Container = styled.View`
   width: 100%;
+  margin-top: ${RFValue(30)}px;
 `;
 
 export const ImageIndexes = styled.View`

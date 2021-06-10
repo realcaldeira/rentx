@@ -5,7 +5,6 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme })=> theme.colors.background_secondary};
-  margin-top: ${RFValue(25)}px;
 `;
 
 export const Header = styled.View`
@@ -14,7 +13,7 @@ export const Header = styled.View`
   align-items: center;
 
   position: absolute;
-  margin-top: ${getStatusBarHeight() + 18}px;
+  margin-top: ${getStatusBarHeight() +10}px;
   margin-left: ${RFValue(24)}px;
 `;
 
@@ -22,14 +21,6 @@ export const CarImages = styled.View`
   flex-direction: row;
 `;
 
-
-export const Content = styled.ScrollView.attrs({
-  contentContainerStyle: {
-    padding: 24,
-    alignItems: 'center'
-  },
-  showsVerticalScrollIndicator: false
-})``;
 
 export const Details = styled.View`
   width: 100%;
