@@ -94,7 +94,7 @@ return (
 
                 <FlatList 
                     data={cars}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => String(item.id)}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item }) => (
                         <CarWrapper>
@@ -109,7 +109,7 @@ return (
                                             color={theme.colors.title}
                                             style={{marginHorizontal: 10}}
                                         />
-                                        <CarFooterDate>{item.startDate}</CarFooterDate>
+                                        <CarFooterDate>{item.endDate}</CarFooterDate>
                                     </CarFooterPeriod>
                             </CarFooter>
                         </CarWrapper>
