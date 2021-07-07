@@ -22,8 +22,8 @@ class Car extends Model {
   @field('price')
   price!: number;
 
-  @field('thumnail')
-  thumnail!: string;
+  @field('thumbnail')
+  thumbnail!: string;
 }
 
 export { Car }

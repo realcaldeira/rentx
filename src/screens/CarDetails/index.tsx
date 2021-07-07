@@ -124,7 +124,7 @@ export function CarDetails(){
               <ImageSlider 
                 imagesUrl={
                   !!carUpdated.photos ? 
-                  carUpdated.photos : [{ id: car.thumnail, photo: car.thumnail}]
+                  carUpdated.photos : [{ id: car.thumbnail, photo: car.thumbnail}]
                 }
               />
 

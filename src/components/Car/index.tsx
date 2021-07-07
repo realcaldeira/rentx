@@ -25,7 +25,7 @@ interface Props extends RectButtonProps{
 
 export function Car({ data, ...rest }: Props){
     const netInfo = useNetInfo();
-  const MotorIcon = getAccessoryIcon(data.fuel_type);
+    const MotorIcon = getAccessoryIcon(data.fuel_type);
     return (
     <Container {...rest}>
         <Details>
@@ -46,7 +46,7 @@ export function Car({ data, ...rest }: Props){
         </Details>
 
         <CarImage 
-            source={{ uri: data.thumnail}}
+            source={{ uri: data.thumbnail}}
             resizeMode="contain"
         />
 
